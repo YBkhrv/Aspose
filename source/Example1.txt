@@ -1,0 +1,18 @@
+// path to the .omr file
+string templatePath = "MyTest1.omr";
+
+// initialize engine and get template processor providing path to the .omr file
+OmrEngine engine = new OmrEngine();
+TemplateProcessor templateProcessor = engine.GetTemplateProcessor(templatePath);
+
+// path to the filled omr form image
+string imagePath = "MyTest1Photo1.jpg";
+
+// call recognition method and get the result
+RecognitionResult result = templateProcessor.RecognizeImage(imagePath);
+
+// path to the results file
+string exportPath = "Photo1Results.csv";
+
+// export results as csv string
+File.WriteAllText(exportPath, result.GetCsv());
