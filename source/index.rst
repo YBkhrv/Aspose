@@ -2,30 +2,53 @@ Aspose.OMR for .NET
 ==================================
 It's easy to take words on your computer screen for granted and place them on a paper sheet: just click on the print button and you have  documents a few moments later.
 
-Scanners aren't that difficult to use but many of them are simply taking a picture of the document and saving it on to your computer with dust particles  and you can't edit a copy of your file because the scanner won't recognize each individual character, but there are a number of devices that make optical character recognition(OCR) possible where each character on a page is scanned individually, so your papers are uploaded as actual text documents instead of pictures.
+Scanners aren't that difficult to use but many of them are simply taking a picture of the document and saving it on to your computer with dust particles  and you can't edit a copy of your file because the scanner won't recognize each individual element on the paper, but there are a number of devices that make optical mark recognition(OMR) possible: your data on the page is scanned individually and documents are uploaded as actual text instead of pictures.
 
 But how does that work?
 ------------------
  
-The whole concept of translating text into electronic signal is very vast and there have been lots of different OCR approaches  over the past years. One of the earliest OCR tool was the `optophone <https://en.wikipedia.org/wiki/Optophone>`_  invented in 1914. The optophone was a device, used by the blind people, that scanned text and generated time-varying chords of tones to identify letters. It was one of the earliest known applications of sonification.
- 
+The whole concept of translating information on the paper into electronic signal is very vast and there have been lots of different OMR approaches  over the past years. 
+One of the earliest takes was the `optophone <https://en.wikipedia.org/wiki/Optophone>`_  invented in 1914. The optophone was a device, used by the blind people, that scanned text and generated time-varying chords of tones to identify letters. It was one of the earliest known applications of sonification.
+Another early forms of OMR were paper tapes and punch cards, where actual holes punched into the media were used rather than pencil-filled mugs on the media. 
+Now OMR is a widespread practice. You can see the application of this in everyday life: recognition of barcodes on product packaging, exam papers, vote tabulation.
 
  
-But it wasn't until the 1970s that OCR began to take a more familiar form for us with postal services using OCR to read addresses.
 
-Here are the steps that make OCR work:
+Some vocabulary:
+**A template** is an OMR sheet model with a particular diagram or design. 
 
-1.To cut out useless elements, so that the program can concentrate only on the  text .
+**A pixel element** is the smallest point of a document.
 
-2.To transform any colors or shades of gray in the image to black and white to make the words  easier to recognize.
+.. image:: https://i.ibb.co/TthBYyB/Printing.jpg
 
-3. To figure out which characters are on the page and compare each scanned letter pixel by pixel to a known trained before  dataset of fonts and decide which is the exact letter is on the page.
-Each character is disassembled into curves and corners. Here OCR software can also make use of a dictionary so it won't accidentally miss out incorrect words.
+Here are the methods that make OMR work:
 
-.. image:: https://i.ibb.co/vh80fcQ/Diagram.jpg
 
-However OCR itself obviously is not perfect, but with the help of **Aspose.OMR for .NET** from Aspose things get better.
 
+1.	Input fields look like  bubbles or boxes which can be filled in with a soft pencil. These fields then need to be located on the scanned form beforehand they will be detected. 
+
+2.	Mark matching is used to detect marks  in the rectangular boxes. Template matching is the process where a template image can be located within a larger image by sampling each point within the larger image and comparing the strength of the match. 
+
+3. The projection profile method uses rectangular boxes too, but compares the marks made within a single form to determine a threshold for classification using a histogram of pixel counts. 
+
+4. Pixel counting is the classification of a marks based on the  scanned pixels fraction  in an input field which exceed a pre-determined threshold.
+
+5. The finder pattern method uses a large rectangular box at the print borders to accurately remove any rotation in the scanned image. The input fields are then extracted based on calculated positions and simple pixel counting employed to detect the marks. 
+
+6. Simple thresholding is like the projection profile method but detects darkened bubbles instead of cross marks in rectangular boxes. 
+
+In general, the mentioned above methods for mark detection perform good  when respondents use the correct pencil. But this proceed only possible in a special supervised setting with trained personnel. 
+
+This detection method consists of three sequential processes:
+
+1. The removal of internal labels is done by masking out the labels with a template, so that any residual pixels can be attributed solely to user marks.
+
+2. Mark detection involves simple pixel counting after pre-processing to remove noise.
+
+3. Common print and scan artefacts are corrected for using a statistical technique that isolates user marks from the artefacts.
+ 
+
+However OMR itself obviously is not perfect, but with the help of **Aspose.OMR for .NET** from Aspose things get better.
 
 
 `Aspose.com <https://about.aspose.com/>`_ is the market leader offering `20+ file format APIs <https://products.aspose.com/>`_  for different platforms including .NET, Java, C++ and Android, reporting solutions for Microsoft SharePoint and rendering extensions for Microsoft SQL Server Reporting Services and JasperReports with over `21,000 customers <https://websites.aspose.com/>`_  (including 80% of Fortune 100 companies) in 135 countries.
@@ -59,7 +82,8 @@ You can conduct any kind of surveys with Aspose.OMR: customer satisfaction surve
 Create your own template 
 ------------------
 
-Aspose.OMR for .NET API provides methods to create OMR `templates <https://products.aspose.com/omr/net/>`_ from text description. Using this feature developers can create highly customizable omr sheets ready for print. API supports several types of elements, including text, choice box (question), answer sheet (several columns of questions), grid (complex values that consist of similar sections). Generated images can be saved as ready-to-print PDF files or PNG images.
+The need for OMR software arose due to the fact that early optical mark recognition systems used special scanners and special pre-printed forms with drop-down colors and registration tags. Such forms usually cost from about a dollar per page. But Aspose.OMR for .NET API provides methods to create OMR `templates <https://products.aspose.com/omr/net />`_ OMR software users create their own forms with character recognition and can save thousands of dollars on a large number of custom forms. Generated images can be saved as ready-to-print PDF files or PNG images.
+
 ::
 
  // initialize engine and get template processor providing path to the .omr file
@@ -84,7 +108,7 @@ Recognize OMR sheets
 ------------------
 
 Aspose.OMR for .NET main feature is a recognition. API can recognize photos and scans in multiple image formats:JPEG, PNG, GIF, TIFF. In order to recognize images OMR engine requires .omr file, which is a template that describes position and content of the form. Generation provides template with each created form and we offer GUI application for creating template from any user image.
-Recognition process is fast and accurate and takes just a couple of seconds per image, depending on the image quality and size.The recognition results can be saved as JSON or CSV files
+Recognition process is fast and accurate and takes just a couple of seconds per image, depending on the image quality and size.The recognition results can be saved as JSON or CSV files.
 
 ::
 
@@ -121,3 +145,4 @@ To sum up everything that is written above  with Aspose.OMR for .NET  there is n
 
 **You can always find more in the implementation of the above along in our regularly updated documents** 
  * https://docs.aspose.com/
+
